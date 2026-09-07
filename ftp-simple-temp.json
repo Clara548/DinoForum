@@ -1,0 +1,13 @@
+[
+	{
+		"name": "DinoForum",
+		"host": "ftpupload.net",
+		"port": 21,
+		"type": "ftp",
+		"username": "if0_41744251",
+		"password": "PFyOkUFexEhW",
+		"path": "/htdocs",
+		"autosave": true,
+		"confirm": true
+	}
+]

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦕 DinoForum - Dinosaurios y Noticias 🦖</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Fondo -->
+    <div class="fondo-dino">
+        <div class="capa-gradient"></div>
+        <div class="capa-escamas"></div>
+        <div class="capa-particulas"></div>
+        <div class="capa-nebulosa"></div>
+        <div class="capa-fosiles"></div>
+    </div>
+
+    <!-- Menú Hamburguesa -->
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav">
+        <div class="nav-header">
+            <img src="img/logotipo.png" alt="DinoForum Logo" class="nav-logo">
+            <h2>DinoForum</h2>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="#inicio" class="nav-link active" data-section="inicio">
+                    <i class="fas fa-home"></i>
+                    <span data-i18n="nav_home">🏠 Inicio</span>
+                </a>
+            </li>
+            <li>
+                <a href="#dinosaurios" class="nav-link" data-section="dinosaurios">
+                    <i class="fas fa-bone"></i>
+                    <span data-i18n="nav_dinosaurs">🦕 Dinosaurios</span>
+                </a>
+            </li>
+            <li>
+                <a href="#noticias" class="nav-link" data-section="noticias">
+                    <i class="fas fa-newspaper"></i>
+                    <span data-i18n="nav_news">📰 Noticias</span>
+                </a>
+            </li>
+        </ul>
+        <div class="nav-footer">
+            <p>🦖 Jurásico | 🦕 Cretácico | 🌿 Triásico</p>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        
+        <!-- SECCIÓN INICIO -->
+        <section id="inicio" class="section active-section">
+            <header class="header">
+                <div class="header-content">
+                    <h1 class="main-title">
+                        <span class="title-line">🦕 DINO</span>
+                        <span class="title-line highlight">FORUM</span>
+                        <span class="title-line">🦖</span>
+                    </h1>
+                    <p class="subtitle" data-i18n="home_subtitle">Descubre las últimas novedades del mundo jurásico</p>
+                </div>
+            </header>
+
+            <div class="section-header">
+                <h2 class="section-title">
+                    <i class="fas fa-sparkles"></i> <span data-i18n="new_section">🆕 NUEVO</span>
+                    <i class="fas fa-sparkles"></i>
+                </h2>
+                <p class="section-subtitle" data-i18n="new_subtitle">Todo el contenido recién añadido</p>
+            </div>
+
+            <!-- Selector de idioma -->
+            <div class="language-selector">
+                <button class="lang-btn active" data-lang="es">🇪🇸 Español</button>
+                <button class="lang-btn" data-lang="en">🇬🇧 English</button>
+            </div>
+
+            <div class="inicio-grid" id="inicioGrid">
+                <div class="loading">
+                    <div class="dino-loader"></div>
+                    <p data-i18n="loading">Cargando contenido...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DINOSAURIOS -->
+        <section id="dinosaurios" class="section">
+            <header class="header">
+                <div class="header-content">
+                    <h1 class="main-title">
+                        <span class="title-line">🦕 DINO</span>
+                        <span class="title-line highlight">SAURIOS</span>
+                    </h1>
+                    <p class="subtitle" data-i18n="dinosaurs_subtitle">Explora el mundo perdido de los gigantes prehistóricos</p>
+                </div>
+            </header>
+
+            <div class="search-section">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchDinoInput" class="search-input" data-i18n-placeholder="search_dinosaur" placeholder="Buscar dinosaurio...">
+                </div>
+                <div class="filters">
+                    <select id="filterPeriodo" class="filter-select">
+                        <option value="" data-i18n="all_periods">📅 Todos los períodos</option>
+                        <option value="Triásico">🌿 Triásico</option>
+                        <option value="Jurásico">🌲 Jurásico</option>
+                        <option value="Cretácico">🍂 Cretácico</option>
+                    </select>
+                    <select id="filterDieta" class="filter-select">
+                        <option value="" data-i18n="all_diets">🍽️ Todas las dietas</option>
+                        <option value="Carnívoro">🍖 Carnívoros</option>
+                        <option value="Herbívoro">🌿 Herbívoros</option>
+                        <option value="Omnívoro">🍎 Omnívoros</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- CONTADOR DE DINOSAURIOS -->
+            <div class="dino-counter" id="dinoCounter">
+                <div class="counter-box">
+                    <i class="fas fa-bone"></i>
+                    <span id="totalDinosCount">0</span>
+                    <span id="dinoCounterText" data-i18n="dinosaurs_total">dinosaurios en total</span>
+                </div>
+                <div class="counter-box filtered" id="filteredDinoCounter" style="display: none;">
+                    <i class="fas fa-filter"></i>
+                    <span id="filteredDinosCount">0</span>
+                    <span id="filteredDinoText" data-i18n="showing">mostrando</span>
+                </div>
+            </div>
+
+            <div class="dino-grid" id="dinoGrid"></div>
+            <div class="pagination" id="dinoPagination"></div>
+        </section>
+
+        <!-- SECCIÓN NOTICIAS -->
+        <section id="noticias" class="section">
+            <header class="header">
+                <div class="header-content">
+                    <h1 class="main-title">
+                        <span class="title-line">📰 NOTICIAS</span>
+                        <span class="title-line highlight">DINO</span>
+                    </h1>
+                    <p class="subtitle" data-i18n="news_subtitle">Últimas novedades del mundo jurásico</p>
+                </div>
+            </header>
+
+            <div class="search-section">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchNoticiaInput" class="search-input" data-i18n-placeholder="search_news" placeholder="Buscar por título...">
+                </div>
+                <div class="filters">
+                    <input type="date" id="filterFecha" class="filter-select" placeholder="Filtrar por fecha">
+                    <button id="resetNoticiaFilters" class="reset-btn" data-i18n="reset">Restablecer</button>
+                </div>
+            </div>
+
+            <div class="noticias-grid" id="noticiasGrid"></div>
+            <div class="pagination" id="noticiasPagination"></div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4><i class="fas fa-paw"></i> DinoForum</h4>
+                <p data-i18n="footer_description">La enciclopedia más completa de dinosaurios</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="quick_links">Enlaces rápidos</h4>
+                <ul>
+                    <li><a href="politica-privacidad.html" data-i18n="privacy">Política de privacidad</a></li>
+                    <li><a href="terminos-uso.html" data-i18n="terms">Términos de uso</a></li>
+                    <li><a href="politica-cookies.html" data-i18n="cookies">Política de cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="follow_us">Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4 data-i18n="support">Apoya DinoForum</h4>
+                <p data-i18n="support_text">Si te gusta el proyecto, invita a un café ☕</p>
+                <a href="https://paypal.me/DinoForum" target="_blank" class="paypal-btn">
+                    <i class="fab fa-paypal"></i> <span data-i18n="donate">Donar con PayPal</span>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 DinoForum - <span data-i18n="footer_bottom">Un viaje al pasado jurásico</span></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
